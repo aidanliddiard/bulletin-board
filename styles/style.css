@@ -27,15 +27,19 @@ body, main {
     align-items: center;
     }
 
-.location {}
+.location {
+    text-align: center;
+}
 
 .img img {
-    width: 20vw;
+    width: 25vw;
     object-fit: cover;
 }
 
 .description { 
-    margin: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 0px;
 }
 
 

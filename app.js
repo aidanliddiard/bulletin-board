@@ -1,10 +1,15 @@
 // import functions and grab DOM elements
 import { fetchPosts } from './fetch-utils.js';
-// let state
+import { renderPost } from './render-utils.js';
 
-// set event listeners 
-  // get user input
-  // use user input to update state 
-  // update DOM to reflect the new state
+const postList = document.querySelector('.bulletin-board');
 
-  fetchPosts();
+
+window.addEventListener('load', async () => {
+    const posts = await fetchPosts();
+    console.log(posts);
+
+    posts.forEach(element => {
+        postList.append(renderPost(element));
+    });
+});

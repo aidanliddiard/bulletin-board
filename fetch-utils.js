@@ -5,5 +5,10 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export async function fetchPosts() {
     const resp = await client.from('postcards').select('*');
-    console.log(resp);
+    return checkError(resp);
+}
+
+
+function checkError({ data, error }) {
+    return error ? console.error(error) : data;
 }
