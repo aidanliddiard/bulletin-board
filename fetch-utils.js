@@ -8,6 +8,21 @@ export async function fetchPosts() {
     return checkError(resp);
 }
 
+export function getUser() {
+    return client.auth.session() && client.auth.session().user;
+}
+
+export async function signUpUser(email, password) {
+    const resp = await client.auth.singUp({ email, password });
+    return resp;
+}
+
+// export async function redirectIfLoggedIn() {
+//     const user = getUser();
+//     if (user) {
+//         location.replace('/');
+//     }
+// }
 
 function checkError({ data, error }) {
     return error ? console.error(error) : data;
