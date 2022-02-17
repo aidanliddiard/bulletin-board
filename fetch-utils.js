@@ -13,16 +13,16 @@ export function getUser() {
 }
 
 export async function signUpUser(email, password) {
-    const resp = await client.auth.singUp({ email, password });
+    const resp = await client.auth.signUp({ email, password });
     return resp;
 }
 
-// export async function redirectIfLoggedIn() {
-//     const user = getUser();
-//     if (user) {
-//         location.replace('/');
-//     }
-// }
+export function redirectIfLoggedIn() {
+    const user = getUser();
+    if (user) {
+        location.replace('/');
+    }
+}
 
 function checkError({ data, error }) {
     return error ? console.error(error) : data;
