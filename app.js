@@ -1,10 +1,25 @@
 // import functions and grab DOM elements
-import { fetchPosts, getUser } from './fetch-utils.js';
+import { fetchPosts, getUser, logout } from './fetch-utils.js';
 import { renderPost } from './render-utils.js';
 
 const postList = document.querySelector('.bulletin-board');
 const createBtn = document.getElementById('create');
-const loginBtn = document.getElementById('login');
+const authBtn = document.getElementById('auth');
+
+const user = getUser();
+console.log(user);
+if (user) {
+    authBtn.textContent = 'Logout';
+    authBtn.addEventListener('click', async () => {
+        await logout();
+    });
+}
+else { 
+    authBtn.textContent = 'Login'; 
+    authBtn.addEventListener('click', () => {
+        location.replace('/auth-page');
+    });
+}
 
 window.addEventListener('load', async () => {
     const posts = await fetchPosts();
@@ -25,6 +40,3 @@ createBtn.addEventListener('click', () => {
     }
 });
 
-loginBtn.addEventListener('click', () => {
-    location.replace('/auth-page');
-});

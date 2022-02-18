@@ -4,7 +4,7 @@ checkAuth();
 
 const createForm = document.getElementById('create-post');
 const backBtn = document.getElementById('back');
-const logoutBtn = document.getElementById('back');
+const logoutBtn = document.getElementById('logout');
 
 createForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ createForm.addEventListener('submit', async (e) => {
     };
     const resp = await createPost(newPostcard);
     console.log(resp);
-    location.replace('/other-page');
+    location.replace('/');
 });
 
 logoutBtn.addEventListener('click', async () => {
@@ -25,5 +25,5 @@ logoutBtn.addEventListener('click', async () => {
 });
 
 backBtn.addEventListener('click', () =>{
-    location.replace('/other-page');
+    location.replace('/');
 }); 

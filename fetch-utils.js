@@ -41,6 +41,7 @@ export function redirectIfLoggedIn() {
 
 export function checkAuth() {
     const user = getUser();
+    console.log(user);
     if (!user){
         location.replace('/');
     }
