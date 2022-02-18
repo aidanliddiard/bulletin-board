@@ -5,13 +5,17 @@ body, main {
     width: 100%;
 }
 
+
+
 .bulletin-board {  
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-around;
     background-image: url('../assets/josephine-bredehoft-KsAo8ouBn8A-unsplash.jpg');
     background-size: 100vw;
-    width: 100%;
+    width: 90%;
     height: 100%;
     margin: 30px;
     /* box-shadow: 5px 10px #888888; */

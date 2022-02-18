@@ -8,6 +8,11 @@ export async function fetchPosts() {
     return checkError(resp);
 }
 
+export async function createPost(post){
+    const resp = await client.from('postcards').insert(post);
+    return checkError(resp);
+}
+
 export function getUser() {
     return client.auth.session() && client.auth.session().user;
 }
@@ -22,9 +27,21 @@ export async function signInUser(email, password) {
     return resp;
 }
 
+export async function logout() {
+    await client.auth.signOut();
+    location.replace('/');
+}
+
 export function redirectIfLoggedIn() {
     const user = getUser();
     if (user) {
+        location.replace('/create-page');
+    }
+}
+
+export function checkAuth() {
+    const user = getUser();
+    if (!user){
         location.replace('/');
     }
 }
@@ -32,3 +49,4 @@ export function redirectIfLoggedIn() {
 function checkError({ data, error }) {
     return error ? console.error(error) : data;
 }
+
